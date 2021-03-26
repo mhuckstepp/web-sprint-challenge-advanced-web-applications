@@ -5,8 +5,9 @@ import { useHistory } from "react-router-dom";
 const Login = (props) => {
   const [form, setForm] = useState({
     username: "Lambda School",
-    password: "i<3Lambd4",
+    password: "i<3Labd4",
   });
+  const [error, setError] = useState("");
 
   let history = useHistory();
 
@@ -26,7 +27,10 @@ const Login = (props) => {
         localStorage.setItem("token", res.data.payload);
         history.push("/bubblepage");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err.response);
+        setError(err.response.data.error);
+      });
   };
 
   return (
@@ -55,6 +59,7 @@ const Login = (props) => {
           </label>
           <button type="submit">Submit</button>
         </form>
+        {error ? <p>{error}</p> : null}
       </h1>
     </>
   );
