@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 const Login = (props) => {
   const [form, setForm] = useState({
     username: "Lambda School",
-    password: "i<3Labd4",
+    password: "i<3Lambda4",
   });
   const [error, setError] = useState("");
 
@@ -29,7 +29,7 @@ const Login = (props) => {
       })
       .catch((err) => {
         console.log(err.response);
-        setError(err.response.data.error);
+        setError("Username or Password not valid.");
       });
   };
 
